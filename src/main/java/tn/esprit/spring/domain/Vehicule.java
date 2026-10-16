@@ -1,15 +1,11 @@
 package tn.esprit.spring.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Getter
@@ -38,4 +34,13 @@ public class Vehicule {
 
     @Enumerated(EnumType.STRING)
     StatutVehicule statut;
+
+    @OneToMany
+    List<Maintenance> maintenances;
+
+    @ManyToMany
+    List<Equipement> equipements;
+
+    @ManyToOne
+    Agence agence;
 }

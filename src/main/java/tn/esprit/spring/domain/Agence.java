@@ -1,13 +1,11 @@
 package tn.esprit.spring.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,4 +25,9 @@ public class Agence {
     String adresse;
 
     String telephone;
+    @OneToMany(mappedBy = "agence")
+    List<Employe> employes;
+
+    @OneToMany(mappedBy = "agence")
+    List<Vehicule>vehicules;
 }
